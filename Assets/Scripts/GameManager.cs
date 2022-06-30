@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -11,7 +12,24 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
+    #region Properties
+
+    public int Score { get; private set; }
+
+    #endregion
+
+
     #region Unity lifecycle
+
+    private void Start()
+    {
+        FindObjectOfType<LevelManager>().OnAllBlocksDestroyed += PerformWin; // TODO: Use singleton
+    }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<LevelManager>().OnAllBlocksDestroyed -= PerformWin; // TODO: Use singleton
+    }
 
     private void Update()
     {
@@ -19,11 +37,28 @@ public class GameManager : MonoBehaviour
             return;
 
         _ball.MoveWithPad();
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             StartBall();
         }
+    }
+
+    #endregion
+
+
+    #region Public methods
+
+    public void AddScore(int score)
+    {
+        Score += score;
+        // Invoke event
+    }
+
+    public void PerformWin()
+    {
+        Debug.LogError($"WIN!");
+        // Todo: Add real logic
     }
 
     #endregion
