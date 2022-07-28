@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3034405761622949984}
   - component: {fileID: 3034405761622949986}
   - component: {fileID: 3999828460418456558}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WoodBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,3 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01386d4dd4a94cf7b0e31a198d1285bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _score: 3
+  _pickUpPrefab: {fileID: 3580273493361774996, guid: acec22e993e484a738a29ea2b1547d21, type: 3}
+  _pickUpSpawnChance: 0.428

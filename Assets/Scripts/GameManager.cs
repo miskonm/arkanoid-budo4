@@ -1,47 +1,66 @@
 using System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     #region Variables
 
-    [SerializeField] private Ball _ball;
+    [SerializeField] private int _startHp;
+    [SerializeField] private bool _needAutoPlay;
 
-    private bool _isStarted;
+    private int _hp;
+
+    #endregion
+
+
+    #region Events
+
+    public event Action<int> OnScoreChanged;
+    public event Action<int> OnHpChanged;
+    public event Action OnGameWon;
+    public event Action OnGameOver;
 
     #endregion
 
 
     #region Properties
 
+    public bool NeedAutoPlay => _needAutoPlay;
     public int Score { get; private set; }
+
+    public int Hp
+    {
+        get => _hp;
+        set
+        {
+            if (value == _hp)
+                return;
+
+            _hp = value;
+            OnHpChanged?.Invoke(_hp);
+        }
+    }
 
     #endregion
 
 
     #region Unity lifecycle
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        Hp = _startHp;
+    }
+
     private void Start()
     {
-        FindObjectOfType<LevelManager>().OnAllBlocksDestroyed += PerformWin; // TODO: Use singleton
+        LevelManager.Instance.OnAllBlocksDestroyed += PerformWin;
     }
 
     private void OnDestroy()
     {
-        FindObjectOfType<LevelManager>().OnAllBlocksDestroyed -= PerformWin; // TODO: Use singleton
-    }
-
-    private void Update()
-    {
-        if (_isStarted)
-            return;
-
-        _ball.MoveWithPad();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartBall();
-        }
+        LevelManager.Instance.OnAllBlocksDestroyed -= PerformWin;
     }
 
     #endregion
@@ -49,27 +68,29 @@ public class GameManager : MonoBehaviour
 
     #region Public methods
 
-    public void AddScore(int score)
+    public void ChangeScore(int score)
     {
         Score += score;
-        // Invoke event
+        OnScoreChanged?.Invoke(Score);
     }
 
     public void PerformWin()
     {
         Debug.LogError($"WIN!");
         // Todo: Add real logic
+
+        OnGameWon?.Invoke();
     }
 
-    #endregion
-
-
-    #region Private methods
-
-    private void StartBall()
+    public void LoseLife()
     {
-        _isStarted = true;
-        _ball.StartMove();
+        Hp--;
+        FindObjectOfType<Ball>().ToDefaultState();
+
+        if (Hp == 0)
+        {
+            OnGameOver?.Invoke();
+        }
     }
 
     #endregion

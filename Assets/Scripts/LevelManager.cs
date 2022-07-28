@@ -1,14 +1,15 @@
 using System;
-using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : SingletonMonoBehaviour<LevelManager>
 {
     private int _blocksCount;
 
     public event Action OnAllBlocksDestroyed;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         Block.OnCreated += BlockCreated;
         Block.OnDestroyed += BlockDestroyed;
     }
@@ -26,13 +27,11 @@ public class LevelManager : MonoBehaviour
 
     private void BlockDestroyed(Block block, int score)
     {
-        FindObjectOfType<GameManager>().AddScore(score);
+        GameManager.Instance.ChangeScore(score);
         
         _blocksCount--;
 
         if (_blocksCount == 0)
-        {
             OnAllBlocksDestroyed?.Invoke();
-        }
     }
 }
