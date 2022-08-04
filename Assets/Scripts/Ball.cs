@@ -9,6 +9,9 @@ public class Ball : MonoBehaviour
     [SerializeField] private Vector2 _startDirection;
     [SerializeField] private Pad _pad;
     [SerializeField] private float _minSpeed = 1;
+    
+    [Header("Music")]
+    [SerializeField] private AudioSource _audioSource;
 
     private Vector3 _startPosition;
     private bool _isStarted;
@@ -49,6 +52,11 @@ public class Ball : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + (Vector3) _rb.velocity);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        _audioSource.Play();
     }
 
     #endregion

@@ -125,5 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _score: 3
-  _pickUpPrefab: {fileID: 3580273493361774996, guid: acec22e993e484a738a29ea2b1547d21, type: 3}
   _pickUpSpawnChance: 0.428
+  _pickUpInfoArray: []
+  _audioClip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
