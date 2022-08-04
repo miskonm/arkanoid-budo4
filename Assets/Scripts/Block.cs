@@ -8,12 +8,11 @@ public class Block : MonoBehaviour
 
     [Header("Block")]
     [SerializeField] private int _score;
-
+    
     [Header("Pick Up")]
-    [SerializeField] private GameObject _pickUpPrefab;
-
     [Range(0f, 1f)]
     [SerializeField] private float _pickUpSpawnChance;
+    [SerializeField] private PickUpInfo[] _pickUpInfoArray;
 
     #endregion
 
@@ -44,6 +43,15 @@ public class Block : MonoBehaviour
         OnDestroyed?.Invoke(this, _score);
     }
 
+    private void OnValidate()
+    {
+        if (_pickUpInfoArray == null || _pickUpInfoArray.Length == 0)
+            return;
+
+        foreach (PickUpInfo pickUpInfo in _pickUpInfoArray)
+            pickUpInfo.UpdateName();
+    }
+
     #endregion
 
 
@@ -51,14 +59,38 @@ public class Block : MonoBehaviour
 
     private void SpawnPickUp()
     {
-        if (_pickUpPrefab == null)
+        if (_pickUpInfoArray == null || _pickUpInfoArray.Length == 0)
             return;
         
         float random = Random.Range(0f, 1f);
-        if (random <= _pickUpSpawnChance)
+        if (random > _pickUpSpawnChance)
+            return;
+
+        int chanceSum = 0;
+
+        foreach (PickUpInfo pickUpInfo in _pickUpInfoArray)
         {
-            Instantiate(_pickUpPrefab, transform.position, Quaternion.identity);
+            chanceSum += pickUpInfo.SpawnChance;
         }
+
+        int randomChance = Random.Range(0, chanceSum);
+        int currentChance = 0;
+        int currentIndex = 0;
+
+        for (int i = 0; i < _pickUpInfoArray.Length; i++)
+        {
+            PickUpInfo pickUpInfo = _pickUpInfoArray[i];
+            currentChance += pickUpInfo.SpawnChance;
+
+            if (currentChance >= randomChance)
+            {
+                currentIndex = i;
+                break;
+            }
+        }
+
+        PickUpBase pickUpPrefab = _pickUpInfoArray[currentIndex].PickUpPrefab;
+        Instantiate(pickUpPrefab, transform.position, Quaternion.identity);
     }
 
     #endregion

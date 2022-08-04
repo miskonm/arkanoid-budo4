@@ -3852,6 +3852,90 @@ PrefabInstance:
       propertyPath: _pickUpSpawnChance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8687265585528884636, guid: aa273a1d37ded4c1d925102322dfce36, type: 3}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1123619002318280500, guid: aee17b8a752684eb6b4ec84efce0e498, type: 3}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1383063327402681954, guid: 7827e4624fffb4e75a83eac6dd9f41ad, type: 3}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4732193587231309236, guid: acec22e993e484a738a29ea2b1547d21, type: 3}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[0].name
+      value: BallSpeedDownPickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[1].name
+      value: BallSpeedUpPickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[2].name
+      value: ScoreDownPickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[3].name
+      value: BallSpeedUpPickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[4].name
+      value: BallSpeedUpPickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[0].SpawnChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[1].SpawnChance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[2].SpawnChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[3].SpawnChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[4].SpawnChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[0].PickUpPrefab
+      value: 
+      objectReference: {fileID: 8687265585528884636, guid: aa273a1d37ded4c1d925102322dfce36, type: 3}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[1].PickUpPrefab
+      value: 
+      objectReference: {fileID: 1123619002318280500, guid: aee17b8a752684eb6b4ec84efce0e498, type: 3}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[2].PickUpPrefab
+      value: 
+      objectReference: {fileID: 1383063327402681954, guid: 7827e4624fffb4e75a83eac6dd9f41ad, type: 3}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[3].PickUpPrefab
+      value: 
+      objectReference: {fileID: 1123619002318280500, guid: aee17b8a752684eb6b4ec84efce0e498, type: 3}
+    - target: {fileID: 3999828460418456558, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
+      propertyPath: _pickUpInfoArray.Array.data[4].PickUpPrefab
+      value: 
+      objectReference: {fileID: 1123619002318280500, guid: aee17b8a752684eb6b4ec84efce0e498, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 474616c30365848c09bcaec9e75c3d71, type: 3}
 --- !u!1001 &5101994869302366073
