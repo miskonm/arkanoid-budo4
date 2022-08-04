@@ -8,7 +8,7 @@ public class Block : MonoBehaviour
 
     [Header("Block")]
     [SerializeField] private int _score;
-    
+
     [Header("Pick Up")]
     [Range(0f, 1f)]
     [SerializeField] private float _pickUpSpawnChance;
@@ -34,8 +34,10 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        SpawnPickUp();
-        Destroy(gameObject);
+        // change hp
+        // if(hp == 0)
+        // DestroyBlock();
+        DestroyBlock();
     }
 
     private void OnDestroy()
@@ -55,13 +57,24 @@ public class Block : MonoBehaviour
     #endregion
 
 
+    #region Public methods
+
+    public virtual void DestroyBlock()
+    {
+        SpawnPickUp();
+        Destroy(gameObject);
+    }
+
+    #endregion
+
+
     #region Private methods
 
     private void SpawnPickUp()
     {
         if (_pickUpInfoArray == null || _pickUpInfoArray.Length == 0)
             return;
-        
+
         float random = Random.Range(0f, 1f);
         if (random > _pickUpSpawnChance)
             return;
