@@ -9,11 +9,14 @@ public class Block : MonoBehaviour
     [Header("Block")]
     [SerializeField] private int _score;
 
+    [Header("Particle")]
+    [SerializeField] private GameObject _vfxPrefab;
+
     [Header("Pick Up")]
     [Range(0f, 1f)]
     [SerializeField] private float _pickUpSpawnChance;
     [SerializeField] private PickUpInfo[] _pickUpInfoArray;
-    
+
     [Header("Music")]
     [SerializeField] private AudioClip _audioClip;
 
@@ -67,6 +70,7 @@ public class Block : MonoBehaviour
         AudioPlayer.Instance.PlaySound(_audioClip);
         SpawnPickUp();
         Destroy(gameObject);
+        SpawnVfx();
     }
 
     #endregion
@@ -108,6 +112,14 @@ public class Block : MonoBehaviour
 
         PickUpBase pickUpPrefab = _pickUpInfoArray[currentIndex].PickUpPrefab;
         Instantiate(pickUpPrefab, transform.position, Quaternion.identity);
+    }
+
+    private void SpawnVfx()
+    {
+        if (_vfxPrefab == null)
+            return;
+
+        Instantiate(_vfxPrefab, transform.position, Quaternion.identity);
     }
 
     #endregion
